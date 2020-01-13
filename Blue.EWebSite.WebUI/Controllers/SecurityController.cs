@@ -23,9 +23,11 @@ namespace Blue.EWebSite.WebUI.Controllers
             _signInManager = signInManager;
         }
 
+        [HttpGet]
         public IActionResult Register()
         {
-            return View();
+            RegisterViewModel model = new RegisterViewModel();
+            return View(model);
         }
 
         [HttpPost]
@@ -36,8 +38,8 @@ namespace Blue.EWebSite.WebUI.Controllers
             {
                 AppIdentityUser appIdentityUser = new AppIdentityUser
                 {
-                    Email = model.Email,
-                     UserName = model.UserName
+                    UserName = model.UserName,
+                     Email = model.Email
                 };
                 IdentityResult result = _userManager.CreateAsync(appIdentityUser, model.Password).Result;
                 if (result.Succeeded)

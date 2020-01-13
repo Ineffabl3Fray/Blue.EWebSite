@@ -18,16 +18,14 @@ namespace Blue.EWebSite.WebUI
 {
     public class Startup
     {
-        private IConfiguration _configuration;
-
-        public Startup(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
+        
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<BlueContext>(options => options.UseSqlServer(_configuration["DbConnection"]));
+            services.AddMvc();
+            services.AddDistributedMemoryCache();
+
+            services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlServer(@"server=(localdb)\MSSQLLocalDB; database=BlueContext; integrated security=true"));
             services.AddIdentity<AppIdentityUser, AppIdentityRole>().AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
             services.Configure<IdentityOptions>(options =>
             {
@@ -41,7 +39,6 @@ namespace Blue.EWebSite.WebUI
                 options.SignIn.RequireConfirmedPhoneNumber = false;
                 options.SignIn.RequireConfirmedAccount = false;
             });
-
             services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = "/Security/Login";
