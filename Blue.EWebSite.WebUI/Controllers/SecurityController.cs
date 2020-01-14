@@ -13,10 +13,10 @@ namespace Blue.EWebSite.WebUI.Controllers
     public class SecurityController : Controller
     {
         private UserManager<AppIdentityUser> _userManager;
-        private RoleManager<AppIdentityRole> _roleManager;
+        private RoleManager<IdentityRole> _roleManager;
         private SignInManager<AppIdentityUser> _signInManager;
 
-        public SecurityController(UserManager<AppIdentityUser> userManager, RoleManager<AppIdentityRole> roleManager, SignInManager<AppIdentityUser> signInManager)
+        public SecurityController(UserManager<AppIdentityUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<AppIdentityUser> signInManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -46,7 +46,7 @@ namespace Blue.EWebSite.WebUI.Controllers
                 {
                     if (!_roleManager.RoleExistsAsync("Admin").Result)
                     {
-                        AppIdentityRole appIdentityRole = new AppIdentityRole
+                        IdentityRole appIdentityRole = new IdentityRole
                         {
                             Name = "Admin"
                         };
@@ -67,7 +67,7 @@ namespace Blue.EWebSite.WebUI.Controllers
 
         public IActionResult Login()
         {
-            return View();
+            return View(new LoginViewModel());
         }
 
         [HttpPost]
@@ -90,6 +90,11 @@ namespace Blue.EWebSite.WebUI.Controllers
         {
             _signInManager.SignOutAsync().Wait();
             return RedirectToAction("Login");
+        }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }

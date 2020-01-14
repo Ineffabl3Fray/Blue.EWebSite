@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Blue.EWebSite.Business.Abstract;
+using Blue.EWebSite.Business.Concrete.EntityFramework;
+using Blue.EWebSite.DataAccess.Abstract;
 using Blue.EWebSite.DataAccess.Concrete.EntityFramework;
 using Blue.EWebSite.WebUI.Identity;
 using Blue.EWebSite.WebUI.Middlewares;
@@ -18,15 +21,27 @@ namespace Blue.EWebSite.WebUI
 {
     public class Startup
     {
-        
+        public IConfiguration Configuration { get; set; }
+
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddSession();
             services.AddDistributedMemoryCache();
 
-            services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlServer(@"server=(localdb)\MSSQLLocalDB; database=BlueContext; integrated security=true"));
-            services.AddIdentity<AppIdentityUser, AppIdentityRole>().AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
+
+            services.AddScoped<IProductService, ProductManager>();
+            services.AddScoped<IProductDal, ProductDal>();
+            services.AddScoped<ICategoryService, CategoryManager>();
+            services.AddScoped<ICategoryDal, CategoryDal>();
+
+            services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("IdentityConntection")));
+            services.AddIdentity<AppIdentityUser, IdentityRole>().AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = false;
@@ -42,17 +57,17 @@ namespace Blue.EWebSite.WebUI
             services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = "/Security/Login";
-                options.AccessDeniedPath = "/Security/AccessDenied";
                 options.LogoutPath = "/Security/Logout";
+                options.AccessDeniedPath = "/Security/AccessDenied";
                 options.SlidingExpiration = true;
 
                 options.Cookie = new CookieBuilder
                 {
                     HttpOnly = true,
-                     Name = "Blue.EWbsite.Cookie",
-                      Path = "/",
-                       SameSite = SameSiteMode.Lax,
-                        SecurePolicy = CookieSecurePolicy.SameAsRequest
+                    Name = "Blue.EWbsite.Cookie",
+                    Path = "/",
+                    SameSite = SameSiteMode.Lax,
+                    SecurePolicy = CookieSecurePolicy.SameAsRequest
                 };
             });
 
@@ -68,13 +83,22 @@ namespace Blue.EWebSite.WebUI
 
             app.UseRouting();
 
+            app.UseSession();
+
             app.CustomStaticFiles();
 
             app.UseAuthentication();
 
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute("adminProducts", "{controller=Admin}/{action=Edit}/{id?}");
+
             });
         }
     }

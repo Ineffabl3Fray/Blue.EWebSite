@@ -1,43 +1,40 @@
-﻿@using System.Threading.Tasks
-@model RegisterViewModel
+﻿@model RegisterViewModel
+
 @{
     ViewData["Title"] = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Register</h2>
-<br />
+<h1>Register</h1>
+<hr />
 
-    <form asp-controller="Security" asp-action="Register" method="post" role="form">
-
-        <div asp-validation-summary="All" class="text-danger"></div>
-
-        <div class="form-group row">
-            <label asp-for="UserName" type="text" class="col-md-2 col-form-label" />
-            <div class="col-md-10">
-                <input asp-for="UserName" type="text" class="form-control" value="@Model.UserName" placeholder="User name"/>
-                <span asp-validation-for="UserName"></span>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
-        </div>
-        <div class="form-group row">
-            <label asp-for="Email" type="text" class="col-md-2 col-form-label" />
-            <div class="col-md-10">
-                <input asp-for="Email" type="email" class="form-control" value="@Model.Email" placeholder="Email"/>
-                <span asp-validation-for="Email"></span>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-        </div>
-        <div class="form-group row">
-            <label asp-for="Password" type="text" class="col-md-2 col-form-label" />
-            <div class="col-md-10">
-                <input asp-for="Password" type="password" class="form-control" value="@Model.Password" placeholder="Password"/>
-                <span asp-validation-for="Password"></span>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-        </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
 
-        <div class="form-group row">
-            <div class="col-md-10">
-                <button class="btn btn-primary" type="submit">Create User</button>
-            </div>
-        </div>
+<div>
+    <a asp-controller="Security" asp-action="Login">Back to Login</a>
+</div>
 
-    </form>

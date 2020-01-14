@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Blue.EWebSite.DataAccess.Abstract
 {
-    public interface ICategoryDal: IRepository<Category>
+    public interface ICategoryDal : IRepository<Category>
     {
     }
 }

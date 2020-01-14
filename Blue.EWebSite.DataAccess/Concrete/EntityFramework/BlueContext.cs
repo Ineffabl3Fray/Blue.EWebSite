@@ -7,8 +7,8 @@ using System.Text;
 
 namespace Blue.EWebSite.DataAccess.Concrete.EntityFramework
 {
-    public class BlueContext: DbContext
-    {       
+    public class BlueContext : DbContext
+    {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"server=(localdb)\MSSQLLocalDB; database=BlueContext; integrated security=true");

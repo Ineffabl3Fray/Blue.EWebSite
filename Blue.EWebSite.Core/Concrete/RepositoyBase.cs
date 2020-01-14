@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Blue.EWebSite.Core.Concrete
 {
-    public class RepositoyBase<T, TContext> : IRepository<T> 
+    public class RepositoyBase<T, TContext> : IRepository<T>
         where T : class, IEntity, new()
         where TContext : DbContext, new()
     {
@@ -43,7 +43,7 @@ namespace Blue.EWebSite.Core.Concrete
         {
             using (TContext context = new TContext())
             {
-                return filter == null ? context.Set<T>().Where(filter).ToList() : context.Set<T>().ToList();
+                return filter == null ? context.Set<T>().ToList() : context.Set<T>().Where(filter).ToList();
             }
         }
 

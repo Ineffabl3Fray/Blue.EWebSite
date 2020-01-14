@@ -1,7 +1,45 @@
-﻿
+﻿@model ProductListViewModel
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+    @foreach (var item in Model.Products)
+    {
+        <div>
+            <div class="text-center">
+                <label class="">
+                    <h4 class=" ">Yeni Eklenenler</h4>
+                </label>
+            </div>
+            <div class="nav-tabs">
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-md-3 mb-2 mt-2">
+                <div class="card" style="width: 18rem;">
+                    <img src="https://techcrunch.com/wp-content/uploads/2020/01/pax_002.jpg?w=730&crop=1 " class="card-img-top w-80 " alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                        <p class="card-text">@item.UnitPrice TL.</p>
+
+                        <div class="col text-center">
+                            <a href="#" class="btn btn-primary float-center mb-1">Sepete ekle</a><br>
+                            <a href="#" class="btn btn-primary">Detay</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="text-center">
+                <label class="">
+                    <h4 class=" ">FirmaAdi</h4>
+                </label>
+                <div class="nav-tabs">
+                </div>
+                Tecrübeli teknik kadromuz ile güvenilir ve verimli ekip olma anlayışıyla; müşteri memnuniyeti ve kalite ile birlikte zamanındalık ilkesinden ödün vermeden ülke ve dünya standartlarına uygun olarak hizmet sunmaktayız.
+            </div>
+        </div>
+}

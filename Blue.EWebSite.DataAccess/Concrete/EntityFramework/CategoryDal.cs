@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Blue.EWebSite.DataAccess.Concrete.EntityFramework
 {
-    public class CategoryDal: RepositoyBase<Category, BlueContext>, ICategoryDal
+    public class CategoryDal : RepositoyBase<Category, BlueContext>, ICategoryDal
     {
     }
 }

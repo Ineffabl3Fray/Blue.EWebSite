@@ -1,0 +1,89 @@
+﻿@model CategoryListModel
+@{
+}
+
+    <nav class="navbar navbar-expand-lg" style="user-select: auto;">
+        <div class="collapse navbar-collapse" id="navbarColor01" style="user-select: auto;">
+            <ul class="navbar-nav mr-auto" style="user-select: auto;">
+                <li class="nav-item active" style="user-select: auto;">
+                    <a class="nav-link" href="#" style="user-select: auto;">Anasayfa <span class="sr-only" style="user-select: auto;">(current)</span></a>
+                </li>
+                <li class="nav-item" style="user-select: auto;">
+                    <a class="nav-link" href="#" style="user-select: auto;">Hakkımızda</a>
+                </li>
+                <li class="nav-item" style="user-select: auto;">
+                    <a class="nav-link" href="#" style="user-select: auto;">İletişım</a>
+                </li>
+                <li class="nav-item" style="user-select: auto;">
+                    <a class="nav-link" href="#" style="user-select: auto;">MÜŞTERİ HİZMETLERİ: 0212 444 55 66</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav" style="user-select: auto;">
+                <li class="nav-item mr-1" style="user-select: auto;">
+                    <a class="nav-link" href="#" style="user-select: auto;">Üyelik İşlemleri</a>
+                </li>
+                <li class="nav-item" style="user-select: auto;">
+                    <a class="nav-link" href="#" style="user-select: auto;">Sepetim</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-expand-lg" style="user-select: auto;">
+        <a class="navbar-brand" href="#" style="user-select: auto;">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="user-select: auto;">
+            <span class="navbar-toggler-icon" style="user-select: auto;"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01" style="user-select: auto;">
+
+            <form class="form-inline ml-auto" style="user-select: auto;">
+                <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search" style="user-select: auto;">
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit" style="user-select: auto;">Search</button>
+            </form>
+
+            <ul class="navbar-nav " style="user-select: auto;">
+                <li class="nav-item active" style="user-select: auto;">
+                    <a class="nav-link" href="#" style="user-select: auto;">Home <span class="sr-only" style="user-select: auto;">(current)</span></a>
+                </li>
+                <li class="nav-item" style="user-select: auto;">
+                    <a class="nav-link" href="#" style="user-select: auto;">Features</a>
+                </li>
+                <i class="fa fa-user"></i>
+                <i class="cart-icon"><img src="https://hemencdn.com/eticaret/img/icon-cart-hover.png" class="cart-icon-hover" alt="Cart"><img src="https://hemencdn.com/eticaret/img/icon-cart.png" class="cart-icon-standard" alt="Cart"></i>
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                        2.503,00TL
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-lg-right">
+                        <label class="dropdown-item">White Westinghouse HQE6807 Quatro x 1 1.000,00TL</label>
+                        <label class="dropdown-item">Ara Toplam: 1.000,00TL</label>
+                        <label class="dropdown-item">Toplam: 2.503,00TL</label>
+
+                        <div class="dropdown-divider"></div>
+                        <button class="btn btn-secondary mr-2" style="float: right;" type="button">Sepetime Git</button>
+                        <button class="btn btn-secondary mr-2" style="float: right;" type="button">Kasaya Git</button>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </nav>
+
+        <nav class="navbar navbar-expand-lg navbar-light" style="user-select: auto; background-color: #e3f2fd;">
+
+            <div class="container">
+                <ul class="navbar-nav " style="user-select: auto;">
+
+                    @foreach (var item in Model.Categories)
+                    {
+                        <li class="nav-item" style="user-select: auto;">
+                            <a class="nav-link" href="#" style="user-select: auto;">@item.Name</a>
+                        </li>
+                    }
+                   
+                </ul>
+            </div>
+        </nav>
+

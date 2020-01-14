@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blue.EWebSite.DataAccess", "Blue.EWebSite.DataAccess\Blue.EWebSite.DataAccess.csproj", "{5B0AC650-3B31-42BB-8C2F-0F1440C3F557}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blue.EWebSite.Business", "Blue.EWebSite.Business\Blue.EWebSite.Business.csproj", "{247C041A-2529-4C01-9A6B-DB83DA0374A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blue.EWebSite.Business", "Blue.EWebSite.Business\Blue.EWebSite.Business.csproj", "{247C041A-2529-4C01-9A6B-DB83DA0374A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blue.EWebSite.Core", "Blue.EWebSite.Core\Blue.EWebSite.Core.csproj", "{D29CE816-70E9-4066-8FA2-FFD021596742}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blue.EWebSite.Core", "Blue.EWebSite.Core\Blue.EWebSite.Core.csproj", "{D29CE816-70E9-4066-8FA2-FFD021596742}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blue.EWebSite.Entities", "Blue.EWebSite.Entities\Blue.EWebSite.Entities.csproj", "{B5BE3C4A-60CC-4F1D-BEFF-669053B80B1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blue.EWebSite.Entities", "Blue.EWebSite.Entities\Blue.EWebSite.Entities.csproj", "{B5BE3C4A-60CC-4F1D-BEFF-669053B80B1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blue.EWebSite.WebUI", "Blue.EWebSite.WebUI\Blue.EWebSite.WebUI.csproj", "{F2D10368-3ECD-43A8-9154-3C040A1E565A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blue.EWebSite.WebUI", "Blue.EWebSite.WebUI\Blue.EWebSite.WebUI.csproj", "{F2D10368-3ECD-43A8-9154-3C040A1E565A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blue.EWebSite.DataAccess", "Blue.EWebSite.DataAccess\Blue.EWebSite.DataAccess.csproj", "{A7901E93-A548-4290-92D2-27D85A44E5C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5B0AC650-3B31-42BB-8C2F-0F1440C3F557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5B0AC650-3B31-42BB-8C2F-0F1440C3F557}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5B0AC650-3B31-42BB-8C2F-0F1440C3F557}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5B0AC650-3B31-42BB-8C2F-0F1440C3F557}.Release|Any CPU.Build.0 = Release|Any CPU
 		{247C041A-2529-4C01-9A6B-DB83DA0374A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{247C041A-2529-4C01-9A6B-DB83DA0374A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{247C041A-2529-4C01-9A6B-DB83DA0374A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{F2D10368-3ECD-43A8-9154-3C040A1E565A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2D10368-3ECD-43A8-9154-3C040A1E565A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2D10368-3ECD-43A8-9154-3C040A1E565A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7901E93-A548-4290-92D2-27D85A44E5C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7901E93-A548-4290-92D2-27D85A44E5C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7901E93-A548-4290-92D2-27D85A44E5C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7901E93-A548-4290-92D2-27D85A44E5C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
