@@ -97,6 +97,8 @@ namespace Blue.EWebSite.WebUI
 
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
+                endpoints.MapControllerRoute("prooductDetail", "{controller=Home}/{action=Detail}/{id?}");
+
                 endpoints.MapControllerRoute("adminProducts", "{controller=Admin}/{action=Edit}/{id?}");
 
             });

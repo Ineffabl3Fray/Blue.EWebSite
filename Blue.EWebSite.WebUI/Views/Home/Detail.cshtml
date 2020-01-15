@@ -1,0 +1,66 @@
+﻿@model ProductModel
+@{
+    ViewData["Title"] = "Detail";
+}
+
+
+<div class="navbar" style="background-color: #ebebeb;">
+    <div class="container nav-item py-2">
+        <div class="row">
+            <b> @Model.Products.Name</b>
+        </div>
+        <div class="nav-item" style="">
+            <a asp-action="Index" asp-controller="Home" style="text-decoration: none">Anasayfa</a> >
+            <a href="/Home/Detail/@Model.Products.Id" style="text-decoration: none">  @Model.Products.Name</a>
+        </div>
+    </div>
+</div>
+
+<div class="card my-3">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="https://i.pinimg.com/originals/d5/eb/a5/d5eba595ec93552e08be0e19844824ad.jpg" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <p class="card-text">Ürün Kodu: <b class="ml-5">@Model.Products.Name.</b></p>
+                @if (Model.Products.InStock)
+                {
+                    <p class="card-text"> Stok Durumu: <b class="ml-5">Stokta var</b></p>
+                }
+                else
+                {
+                    <p class="card-text"> Stok Durumu: <b class="ml-5">Stokta yok</b></p>
+                }
+                <hr />
+
+                <h2 class="card-title text-primary">@Model.Products.UnitPrice TL</h2>
+
+                <hr />
+
+                <div class="card my-3">
+                    <div class="card-body">
+                        <h4 asp-for="Products.StockQuantity" class="card-text">Adet</h4>
+                        <div>
+                            <input asp-for="Products.StockQuantity" class="" />
+                            <input type="submit" value="Sepete ekle" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <div>
+        <div class="mb-1">
+            <h4  asp-for="Products.Description" class="card-text border-bottom">Açıklama</h4>
+        </div>
+        <div>
+            <textarea style="width: 100%; height: 100%"> @Model.Products.Description </textarea>
+        </div>
+    </div>
+</div>
+

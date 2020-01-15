@@ -25,6 +25,16 @@ namespace Blue.EWebSite.WebUI.Controllers
             {
                 Products = _productService.GetAll()
             });
-        }      
+        }
+
+        public IActionResult Detail(int? id)
+        {
+            var entity = _productService.Get(c => c.Id == id);
+            if (entity == null)
+            {
+                return NotFound();
+            }
+            return View(new ProductModel { Products = entity });
+        }
     }
 }
