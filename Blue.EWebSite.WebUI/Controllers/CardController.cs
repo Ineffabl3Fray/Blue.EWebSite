@@ -3,20 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Blue.EWebSite.Business.Abstract;
-using Blue.EWebSite.Entities.Concrete;
 using Blue.EWebSite.WebUI.ExtensionMethods;
 using Blue.EWebSite.WebUI.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blue.EWebSite.WebUI.Controllers
 {
-
-    public class HomeController : Controller
+    public class CardController : Controller
     {
         private IProductService _productService;
 
-        public HomeController(IProductService productService)
+        public CardController(IProductService productService)
         {
             _productService = productService;
         }
@@ -29,16 +26,20 @@ namespace Blue.EWebSite.WebUI.Controllers
             });
         }
 
-        public IActionResult Detail(int? id)
+        public IActionResult AddToCard(int id)
         {
-            var entity = _productService.Get(c => c.Id == id);
-            if (entity == null)
+            var product = _productService.Get(c => c.Id == id);
+            if (product != null)
             {
-                return NotFound();
+                List<CardViewModel> cart = new List<CardViewModel>();
+                cart.Add(new CardViewModel
+                {
+                    Product = product,
+                });
+                HttpContext.Session.SetObject("product", cart);
             }
-            return View(new ProductModel { Products = entity });
+            return RedirectToAction("Index");
         }
-
 
     }
 }

@@ -31,7 +31,7 @@
                         <div class="col text-center">
 
                             <form asp-controller="Card" asp-action="AddToCard" method="post">
-                                @Html.ActionLink("Sepete ekle", "AddToCard", "Card", new { id = item.Id }, new { @class = "btn btn-success float-center mb-1" })<br>
+                                @Html.ActionLink("Sepete ekle", "AddToCard", "Home", new { id = item.Id }, new { @class = "btn btn-success float-center mb-1" })<br>
                             </form>
                             @Html.ActionLink("Detay", "Detail", new { id = item.Id }, new { @class = "btn btn-primary float-center mb-1" })
                         </div>

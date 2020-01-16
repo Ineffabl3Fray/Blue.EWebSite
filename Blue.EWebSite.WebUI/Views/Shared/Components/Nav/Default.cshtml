@@ -1,4 +1,4 @@
-﻿@model CategoryListModel
+﻿@model CardViewModel
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -6,12 +6,10 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
 
-
-
 <style>
     .dropdown:hover .dropdown-menu {
-            display: block;
-        }
+        display: block;
+    }
 
     .count-notif {
         margin-right: -12px;
@@ -110,7 +108,7 @@
             </ul>
         </div>
     </nav>
-
+    <hr />
     <nav class="navbar navbar-expand-lg" style="user-select: auto;">
         <a class="navbar-brand" href="#" style="user-select: auto;">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation" style="user-select: auto;">
@@ -128,7 +126,6 @@
                 </div>
             </form>
 
-
             <ul class="navbar-nav " style="user-select: auto;">
                 <li class="nav-item mr-1" style=" user-select: auto;">
                     <a id="profile" class="nav-link btn btn-lg mr-3 mt-0 border-secondary rounded-circle w-100" href="#" style="user-select: auto;"> <i class="fa fa-user"></i> </a>
@@ -142,20 +139,42 @@
                         </a>
                     </div>
                 </div>
-                <div class="dropdown">
-                    <button type="button" class="dropdown-toggle ml-1 bg-transparent btn text-primary " data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-                        2.503,00TL
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <label class="dropdown-item">White Westinghouse HQE6807 QuatroWhite Westinghouse HQE6807 Quatro x 1 1.000,00TL</label>
-                        <label class="dropdown-item">Ara Toplam: 1.000,00TL</label>
-                        <label class="dropdown-item">Toplam: 2.503,00TL</label>
 
-                        <div class="dropdown-divider"></div>
-                        <button class="btn btn-secondary mr-2" style="float: right;" type="button">Sepetime Git</button>
-                        <button class="btn btn-info mr-2" style="float: right;" type="button">Kasaya Git</button>
+                @if (Model.Product == null)
+                {
+                    <div class="dropdown">
+                        <button type="button" class="dropdown-toggle ml-1 bg-transparent btn text-primary " data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                            0,00TL
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <label class="dropdown-item">Sepete ürün eklenmedi.</label>
+                            <label class="dropdown-item">Ara Toplam: 0,00TL</label>
+                            <label class="dropdown-item">Toplam: 0,00TL</label>
+
+                            <div class="dropdown-divider"></div>
+                            <button class="btn btn-secondary mr-2" style="float: right;" type="button">Sepetime Git</button>
+                            <button class="btn btn-info mr-2" style="float: right;" type="button">Kasaya Git</button>
+                        </div>
                     </div>
-                </div>
+                }
+
+                else
+                {
+                    <div class="dropdown">
+                        <button type="button" class="dropdown-toggle ml-1 bg-transparent btn text-primary " data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                            @Model.Product.UnitPrice TL.
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <label class="dropdown-item"> @Model.Product.Name @Model.Product.UnitPrice TL</label>
+                            <label class="dropdown-item">Ara Toplam: 1.000,00TL</label>
+                            <label class="dropdown-item">Toplam: 2.503,00TL</label>
+
+                            <div class="dropdown-divider"></div>
+                            <button class="btn btn-secondary mr-2" style="float: right;" type="button">Sepetime Git</button>
+                            <button class="btn btn-info mr-2" style="float: right;" type="button">Kasaya Git</button>
+                        </div>
+                    </div>
+                }
             </ul>
 
         </div>
